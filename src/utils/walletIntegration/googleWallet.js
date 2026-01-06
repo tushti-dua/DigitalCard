@@ -46,7 +46,7 @@ export const addToGoogleWallet = async (formData, publicCardUrl) => {
       };
 
       // Call backend API
-      const response = await fetch(`${BACKEND_URL}/api/create-wallet-pass`, {
+      const response = await fetch(`${BACKEND_URL}/create-wallet-pass`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ export const updateGoogleWalletPass = async (formData, publicCardUrl) => {
       publicCardUrl: publicCardUrl
     };
 
-    const response = await fetch(`${BACKEND_URL}/api/update-wallet-pass`, {
+    const response = await fetch(`${BACKEND_URL}/update-wallet-pass`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
