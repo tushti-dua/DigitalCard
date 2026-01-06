@@ -3,11 +3,14 @@
 // FIXED - No process.env reference (Browser Compatible)
 // ============================================
 
-// ✅ FIXED: Use import.meta.env for Vite or fallback to window
 const BACKEND_URL = 
   (typeof import.meta !== 'undefined' && import.meta.env?.VITE_WALLET_BACKEND_URL) ||
   (typeof window !== 'undefined' && window._env_?.REACT_APP_WALLET_BACKEND_URL) ||
   'http://localhost:3001';
+
+// Log for debugging
+console.log('🔧 Wallet Integration v2.0.0');
+console.log('📍 Backend URL:', BACKEND_URL);
 
 /**
  * Google Wallet Integration - Production Ready

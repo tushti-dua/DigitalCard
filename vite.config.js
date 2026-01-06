@@ -1,6 +1,6 @@
 // ============================================
-// FILE 6: vite.config.js
-// Save as: vite.config.js (in root)
+// FILE: vite.config.js
+// Updated with cache busting for production
 // ============================================
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -16,5 +16,21 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  build: {
+    // Force new build hash on every deployment
+    rollupOptions: {
+      output: {
+        // Generate unique filenames with hash for cache busting
+        manualChunks: undefined,
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js'
+      }
+    },
+    // Ensure clean builds
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'esnext'
   }
 })

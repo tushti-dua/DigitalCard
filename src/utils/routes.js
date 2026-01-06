@@ -198,6 +198,20 @@ export const updateGoogleWalletPass = async (formData, publicCardUrl) => {
 export const checkBackendStatus = async () => {
   try {
     // FIXED: Keep this as root / since BACKEND_URL already has /api
+    // ============================================
+// FILE: src/utils/walletIntegration/googleWallet.js
+// VERSION: 2.0.0 - Fixed double /api prefix
+// ============================================
+
+// ✅ FIXED: Use import.meta.env for Vite or fallback to window
+const BACKEND_URL = 
+  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_WALLET_BACKEND_URL) ||
+  (typeof window !== 'undefined' && window._env_?.REACT_APP_WALLET_BACKEND_URL) ||
+  'http://localhost:3001';
+
+console.log('🔧 Wallet Integration v2.0.0 - Backend URL:', BACKEND_URL);
+
+// Rest of your code...
     const response = await fetch(`${BACKEND_URL}/`, {
       method: 'GET',
       headers: {
