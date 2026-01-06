@@ -10,13 +10,28 @@
     },
     {
       "src": "backend/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["backend/**"]
+      }
     }
   ],
   "routes": [
     {
+      "src": "/api",
+      "dest": "backend/server.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "backend/server.js"
+    },
+    {
+      "src": "/card/(.*)",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/portal",
+      "dest": "/index.html"
     },
     {
       "src": "/(.*)",

@@ -59,7 +59,11 @@ console.log('✅ ISSUER_ID:', ISSUER_ID);
 // MIDDLEWARE
 // ============================================
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
+  origin: [
+    'https://business-card-plum-kappa.vercel.app',
+    'http://localhost:5173',
+    process.env.FRONTEND_URL
+  ].filter(Boolean),
   methods: ['POST', 'GET', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
